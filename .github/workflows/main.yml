@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       # -----------------------------
-      # Java (required by Android)
+      # Java
       # -----------------------------
       - name: Set up java
         uses: actions/setup-java@v4
@@ -83,6 +83,25 @@ jobs:
           haxelib set flixel 6.1.0
           haxelib set flixel-ui 2.6.4
           haxelib set flixel-addons 3.3.2
+
+      # -----------------------------
+      # Build hxcpp (force, non-interactive)
+      # -----------------------------
+      - name: Build hxcpp tools and cppia
+        run: |
+          HXCPP_PATH=$(haxelib path hxcpp | head -n 1)
+          cd $HXCPP_PATH
+
+          echo "== Building hxcpp tools =="
+          cd tools/run
+          haxe compile.hxml
+
+          cd ../hxcpp
+          haxe compile.hxml
+
+          echo "== Building cppia =="
+          cd ../../project
+          haxe compile-cppia.hxml
 
       # -----------------------------
       # Lime Android setup
