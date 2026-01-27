@@ -26,15 +26,23 @@ jobs:
           distribution: "temurin"
           java-version: "17"
 
-      # -----------------------------
-      # Android SDK + NDK
-      # -----------------------------
+      # Install SDK and NDK
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: |
+          sdkmanager \
+            "platform-tools" \
+            "platforms;android-33" \
+            "build-tools;33.0.2"
 
       - name: Install Android NDK 21e
         run: |
           sdkmanager "ndk;21.4.7075529"
+
+      - name: Accept Android licenses
+        run: yes | sdkmanager --licenses
 
       # -----------------------------
       # Environment variables
