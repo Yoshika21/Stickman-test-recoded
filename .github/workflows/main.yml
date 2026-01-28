@@ -21,39 +21,41 @@ jobs:
       # -----------------------------
       # Java
       # -----------------------------
-      - name: Set up java
+      - name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
 
+      # -----------------------------
+      # Android SDK / NDK
+      # -----------------------------
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
       - name: Install Android SDK packages
         run: |
-         sdkmanager \
-         "platform-tools" \
-         "platforms;android-30" \
-         "build-tools;30.0.3"
+          sdkmanager \
+            "platform-tools" \
+            "platforms;android-30" \
+            "build-tools;30.0.3"
 
       - name: Install Android NDK r21e
         run: |
-         sdkmanager "ndk;21.4.7075529"
+          sdkmanager "ndk;21.4.7075529"
 
       - name: Accept Android licenses
         run: |
-         yes | sdkmanager --licenses
+          yes | sdkmanager --licenses
 
       - name: Export Android environment variables
         run: |
-         echo "ANDROID_SDK=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
-         echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
-         echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
-         echo "ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/21.4.7075529" >> $GITHUB_ENV
-         echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/21.4.7075529" >> $GITHUB_ENV
+          echo "ANDROID_SDK=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
+          echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
+          echo "ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/21.4.7075529" >> $GITHUB_ENV
+          echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/21.4.7075529" >> $GITHUB_ENV
 
-      
       # -----------------------------
       # Haxe
       # -----------------------------
@@ -63,16 +65,15 @@ jobs:
           haxe-version: 4.3.6
 
       # -----------------------------
-      # Haxelib / hmm
+      # Restore Haxelib cache
       # -----------------------------
-      - name: Install hmm
-        run: |
-          haxelib --global install hmm
-          haxelib --global run hmm setup
-
-      - name: Install haxelib dependencies
-        run: |
-          hmm install
+      - name: Restore haxelib cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .haxelib
+            .hmm
+          key: stickman-libraries
 
       # -----------------------------
       # Force exact library versions
@@ -86,21 +87,19 @@ jobs:
           haxelib set flixel-addons 3.3.2
 
       # -----------------------------
-      # Build hxcpp (force, non-interactive)
+      # Build hxcpp (forced, non-interactive)
       # -----------------------------
       - name: Build hxcpp tools and cppia
         run: |
           HXCPP_PATH=$(haxelib path hxcpp | head -n 1)
           cd $HXCPP_PATH
 
-          echo "== Building hxcpp tools =="
           cd tools/run
           haxe compile.hxml
 
           cd ../hxcpp
           haxe compile.hxml
 
-          echo "== Building cppia =="
           cd ../../project
           haxe compile-cppia.hxml
 
