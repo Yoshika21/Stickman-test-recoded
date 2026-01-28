@@ -30,7 +30,11 @@ jobs:
         shell: bash
         run: |
           echo "HAXEPATH=$(dirname $(dirname $(which haxe)))" >> $GITHUB_ENV
-      
+
+      - name: Add Haxe to PATH (Windows)
+        shell: powershell
+        run: |
+          echo "$env:HAXEPATH" | Out-File -FilePath $env:GITHUB_PATH -Append
       # -----------------------------
       # Install hmm + dependencies
       # -----------------------------
