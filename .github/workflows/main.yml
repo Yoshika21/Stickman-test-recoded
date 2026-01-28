@@ -26,6 +26,11 @@ jobs:
         with:
           haxe-version: 4.3.6
 
+      - name: Export HAXEPATH
+        shell: bash
+        run: |
+          echo "HAXEPATH=$(dirname $(dirname $(which haxe)))" >> $GITHUB_ENV
+      
       # -----------------------------
       # Install hmm + dependencies
       # -----------------------------
@@ -34,11 +39,6 @@ jobs:
         run: |
           haxelib --global install hmm
           haxelib --global run hmm setup
-
-      - name: Export HAXEPATH
-        shell: bash
-        run: |
-          echo "HAXEPATH=$(dirname $(dirname $(which haxe)))" >> $GITHUB_ENV
     
       - name: Install Libs
         run: |
