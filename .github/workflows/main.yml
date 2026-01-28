@@ -25,16 +25,7 @@ jobs:
         uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.3.6
-
-      - name: Export HAXEPATH
-        shell: bash
-        run: |
-          echo "HAXEPATH=$(dirname $(dirname $(which haxe)))" >> $GITHUB_ENV
-
-      - name: Add Haxe to PATH (Windows)
-        shell: powershell
-        run: |
-          echo "$env:HAXEPATH" | Out-File -FilePath $env:GITHUB_PATH -Append
+          
       # -----------------------------
       # Install hmm + dependencies
       # -----------------------------
@@ -46,7 +37,7 @@ jobs:
     
       - name: Install Libs
         run: |
-          hmm install
+          haxelib run hmm install
       # -----------------------------
       # Force exact library versions
       # -----------------------------
