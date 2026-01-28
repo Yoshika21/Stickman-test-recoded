@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="button_left.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="buttonleft anim 00000000" x="0" y="711" width="1238" height="347" frameX="-34" frameY="-241" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="buttonleft anim 00010000" x="0" y="357" width="1262" height="354" frameX="-10" frameY="-234" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="buttonleft anim 00020000" x="0" y="0" width="1270" height="357" frameX="-2" frameY="-231" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="buttonleft idle 00000000" x="0" y="711" width="1238" height="347" frameX="-34" frameY="-241" frameWidth="1280" frameHeight="720"/>
+</TextureAtlas>
