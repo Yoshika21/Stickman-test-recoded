@@ -27,17 +27,17 @@ jobs:
           haxe-version: 4.3.6
           
       # -----------------------------
-      # Install hmm + dependencies
+      # Install dependencies
       # -----------------------------
       - name: Install HMM
         shell: bash
         run: |
-          haxelib --global install hmm
-          haxelib --global run hmm setup
+          haxelib install lime 8.1.3
+          haxelib install openfl 9.3.4
+          haxelib install flixel 6.1.0
+          haxelib install flixel-ui 2.6.4
+          haxelib install flixel-addons 3.32
     
-      - name: Install Libs
-        run: |
-          haxelib run hmm install
       # -----------------------------
       # Force exact library versions
       # -----------------------------
