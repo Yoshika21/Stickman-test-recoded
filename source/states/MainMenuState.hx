@@ -6,7 +6,6 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.math.FlxPoint;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import backend.Transition;
@@ -14,79 +13,56 @@ import Sys;
 
 class MainMenuState extends FlxState
 {
-	// Buttons
 	var startBtn:FlxSprite;
 	var quitBtn:FlxSprite;
-
-	// Error text
 	var errorText:FlxText;
 
-	// Double click logic
-	var lastStartClick:Float = -1;
-	var lastQuitClick:Float = -1;
-	static inline var DOUBLE_CLICK_TIME:Float = 0.35;
+	// 0 = start, 1 = quit
+	var selectedIndex:Int = 0;
 
 	override public function create():Void
 	{
 		super.create();
 
-		// --- Background layers ---
+		// Background layers
 		add(bg("blue_sky"));
 		add(bg("clouds_1"));
 		add(bg("water"));
 		add(bg("ground"));
 		add(bg("mountains_with_stroke"));
 
-		// --- Waterfall animation ---
+		// Waterfall
 		var waterfall = new FlxSprite();
 		waterfall.frames = FlxAtlasFrames.fromSparrow(
 			"assets/images/menus/main/waterfall.png",
 			"assets/images/menus/main/waterfall.xml"
 		);
-		waterfall.animation.addByPrefix(
-			"loop",
-			"waterfalling",
-			24,
-			true
-		);
+		waterfall.animation.addByPrefix("loop", "waterfalling", 24, true);
 		waterfall.animation.play("loop");
 		add(waterfall);
 
-		// Foreground clouds
 		add(bg("clouds_2"));
 
-		// --- Start button ---
-		startBtn = createButton(
-			"start",
-			FlxG.height * 0.55
-		);
+		// Buttons
+		startBtn = createButton("start", FlxG.height * 0.55);
 		add(startBtn);
 
-		// --- Quit button ---
-		quitBtn = createButton(
-			"quit",
-			startBtn.y + 120
-		);
+		quitBtn = createButton("quit", startBtn.y + 120);
 		add(quitBtn);
 
-		// --- Error text (hidden by default) ---
+		// Error text
 		errorText = new FlxText(
-			10,
-			10,
-			FlxG.width - 20,
+			10, 10, FlxG.width - 20,
 			"Error: PlayState is still unfinished, you're unable to play the full game yet."
 		);
 		errorText.setFormat(
-			null,
-			16,
-			FlxColor.RED,
-			LEFT,
-			FlxTextBorderStyle.OUTLINE,
-			FlxColor.BLACK
+			null, 16, FlxColor.RED, LEFT,
+			FlxTextBorderStyle.OUTLINE, FlxColor.BLACK
 		);
 		errorText.alpha = 0;
 		add(errorText);
 
+		updateSelection();
 		Transition.fadeIn();
 	}
 
@@ -94,59 +70,56 @@ class MainMenuState extends FlxState
 	{
 		super.update(elapsed);
 
-		handleButton(startBtn, true);
-		handleButton(quitBtn, false);
-	}
-
-	// --------------------------------------------------
-	// Button handling
-	// --------------------------------------------------
-
-	function handleButton(btn:FlxSprite, isStart:Bool):Void
-	{
-		var hovering:Bool =
-			FlxG.mouse.overlaps(btn) ||
-			touchOverlaps(btn);
-
-		btn.animation.play(hovering ? "selected" : "idle");
-
-		if (!hovering)
-			return;
-
-		if (FlxG.mouse.justPressed || FlxG.touches.justStarted().length > 0)
+		// Navigate LEFT / A → Start
+		if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
 		{
-			var now:Float = FlxG.game.ticks / 1000;
+			selectedIndex = 0;
+			updateSelection();
+		}
 
-			if (isStart)
-			{
-				if (now - lastStartClick <= DOUBLE_CLICK_TIME)
-					confirmStart();
-				lastStartClick = now;
-			}
+		// Navigate RIGHT / D → Quit
+		if (FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
+		{
+			selectedIndex = 1;
+			updateSelection();
+		}
+
+		// Confirm
+		if (FlxG.keys.justPressed.ENTER)
+		{
+			if (selectedIndex == 0)
+				confirmStart();
 			else
-			{
-				if (now - lastQuitClick <= DOUBLE_CLICK_TIME)
-					confirmQuit();
-				lastQuitClick = now;
-			}
+				confirmQuit();
 		}
 	}
 
 	// --------------------------------------------------
-	// Confirm actions
+	// Selection visuals
+	// --------------------------------------------------
+
+	function updateSelection():Void
+	{
+		startBtn.animation.play(
+			selectedIndex == 0 ? "selected" : "idle"
+		);
+		quitBtn.animation.play(
+			selectedIndex == 1 ? "selected" : "idle"
+		);
+	}
+
+	// --------------------------------------------------
+	// Actions
 	// --------------------------------------------------
 
 	function confirmStart():Void
 	{
-		// Cancel sound
 		FlxG.sound.play("assets/sounds/cancel.ogg");
-
 		showErrorMessage();
 	}
 
 	function confirmQuit():Void
 	{
-		// Confirm sound, then exit when finished
 		var snd = FlxG.sound.play("assets/sounds/confirm.ogg");
 		snd.onComplete = function()
 		{
@@ -155,7 +128,7 @@ class MainMenuState extends FlxState
 	}
 
 	// --------------------------------------------------
-	// Error text logic
+	// Error message
 	// --------------------------------------------------
 
 	function showErrorMessage():Void
@@ -164,14 +137,11 @@ class MainMenuState extends FlxState
 			return;
 
 		errorText.alpha = 1;
-
 		FlxTween.tween(
 			errorText,
 			{ alpha: 0 },
 			10,
-			{
-				ease: FlxEase.linear
-			}
+			{ ease: FlxEase.linear }
 		);
 	}
 
@@ -199,20 +169,5 @@ class MainMenuState extends FlxState
 		btn.screenCenter(X);
 		btn.y = yPos;
 		return btn;
-	}
-
-	function touchOverlaps(spr:FlxSprite):Bool
-	{
-		for (touch in FlxG.touches.list)
-		{
-			if (
-				touch.justPressed &&
-				spr.overlapsPoint(
-					FlxPoint.get(touch.screenX, touch.screenY)
-				)
-			)
-				return true;
-		}
-		return false;
 	}
 }
