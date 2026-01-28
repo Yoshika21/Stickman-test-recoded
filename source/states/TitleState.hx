@@ -43,16 +43,14 @@ class TitleState extends FlxState
 		add(bg);
 
 		// Logo
-		logo = new FlxSprite();
-		logo.loadGraphic("assets/images/menus/title/logo.png");
+		logo = new FlxSprite("assets/images/menus/title/logo.png");
 		logo.screenCenter(X);
 		logo.y = 40;
 		logo.alpha = 0;
 		add(logo);
 
 		// Key image
-		key = new FlxSprite();
-		key.loadGraphic("assets/images/menus/title/key.png");
+		key = new FlxSprite("assets/images/menus/title/key.png");
 		key.scale.set(1.5, 1.5);
 		key.updateHitbox();
 		key.screenCenter(X);
@@ -79,15 +77,13 @@ class TitleState extends FlxState
 
 		var activated:Bool = false;
 
-		// Mobile
-		if (FlxG.touches.justStarted().length > 0)
+		// Mouse click (Windows)
+		if (FlxG.mouse.justPressed)
 			activated = true;
 
-		// Desktop
-		#if desktop
+		// Keyboard
 		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.SPACE)
 			activated = true;
-		#end
 
 		if (activated)
 		{
