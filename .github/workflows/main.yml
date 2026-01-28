@@ -123,5 +123,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: android-apk
-          path: export/**/*.apk
+          name: StickmanAndroid-Release
+          path: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
