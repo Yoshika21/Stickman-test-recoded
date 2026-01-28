@@ -1,0 +1,43 @@
+name: Install Dependencies
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup-dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+      # -----------------------------
+      # Checkout
+      # -----------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # -----------------------------
+      # Setup Haxe
+      # -----------------------------
+      - name: Setup Haxe 4.3.6
+        uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.3.6
+
+      # -----------------------------
+      # Restore haxelib cache
+      # -----------------------------
+      - name: Restore haxelib cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .haxelib
+            .hmm
+          key: stickman-libraries
+
+      # -----------------------------
+      # Install hmm + dependencies
+      # -----------------------------
+      - name: Install hmm and dependencies
+        run: |
+          haxelib --global install hmm
+          haxelib --global run hmm setup
+          hmm install
