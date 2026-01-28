@@ -35,6 +35,11 @@ jobs:
           haxelib --global install hmm
           haxelib --global run hmm setup
 
+      - name: Export HAXEPATH
+        shell: bash
+        run: |
+          echo "HAXEPATH=$(dirname $(dirname $(which haxe)))" >> $GITHUB_ENV
+    
       - name: Install Libs
         run: |
           hmm install
