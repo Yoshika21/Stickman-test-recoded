@@ -29,13 +29,15 @@ jobs:
       # -----------------------------
       # Install hmm + dependencies
       # -----------------------------
-      - name: Install Libs
+      - name: Install HMM
         shell: bash
         run: |
           haxelib --global install hmm
           haxelib --global run hmm setup
-          hmm install
 
+      - name: Install Libs
+        run: |
+          hmm install
       # -----------------------------
       # Force exact library versions
       # -----------------------------
