@@ -94,11 +94,11 @@
 	<!-- _________________________________ Custom Defines _______________________________ -->
 
 	<!--Place custom nodes like icons here-->
-	<icon path="setup/icons/icon16.png" size='16'/>
-	<icon path="setup/icons/icon32.png" size='32'/>
-	<icon path="setup/icons/icon64.png" size='64'/>
-	<icon path="setup/icons/icon128.png" size='128'/>
-	<icon path="setup/icons/icon256.png" size="256" />
-	<icon path="setup/icons/icon512.png" size='512'/>
-	<icon path="setup/icons/iconOG.png" />
+	<icon path="setup/art/icons/icon16.png" size="16" />
+	<icon path="setup/art/icons/icon32.png" size="32" />
+	<icon path="setup/art/icons/icon64.png" size="64" />
+	<icon path="setup/art/icons/icon128.png" size="128" />
+	<icon path="setup/art/icons/icon256.png" size="256" />
+	<icon path="setup/art/icons/icon512.png" size="512" />
+	<icon path="setup/art/icons/iconOG.png" />
 </project>
