@@ -1,0 +1,8 @@
+{
+  "achievements": {
+    "Thanks for playing": {
+      "icon": "tfp",
+      "description": "Thanks for playing my first haxe coded game! Also, this is not a full game."
+    }
+  }
+}
