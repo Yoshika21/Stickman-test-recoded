@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="quit.png">
-	<!-- Created using the Spritesheet and XML generator -->
-	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
-	<SubTexture name="quit selected 00000000" x="0" y="0" width="810" height="132" frameX="-450" frameY="-561" frameWidth="1280" frameHeight="720"/>
-	<SubTexture name="quit idle 00000000" x="0" y="132" width="792" height="108" frameX="-457" frameY="-573" frameWidth="1280" frameHeight="720"/>
-</TextureAtlas>
