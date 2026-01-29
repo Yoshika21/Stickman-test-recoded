@@ -92,7 +92,7 @@ class Bullet extends FlxSprite
 	// Hit logic
 	// --------------------------------------------------
 
-	function hitEnemy():Void
+	public static function hitEnemy(enemy:Character, shrub:FlxSprite):Bool
 	{
 		resetBullet();
 
