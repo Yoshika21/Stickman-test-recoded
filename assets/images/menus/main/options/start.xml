@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="start.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="start selected 00000000" x="0" y="111" width="366" height="113" frameX="-33" frameY="-553" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="start idle 00000000" x="0" y="0" width="384" height="111" frameX="-23" frameY="-555" frameWidth="1280" frameHeight="720"/>
+</TextureAtlas>
