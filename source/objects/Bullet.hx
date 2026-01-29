@@ -25,6 +25,8 @@ class Bullet extends FlxSprite
 		this.enemy = enemy;
 		this.shrub = shrub;
 
+		instance = this;
+
 		loadGraphic("assets/images/objects/gun/bullet.png");
 		visible = false;
 		exists = false;
@@ -32,10 +34,7 @@ class Bullet extends FlxSprite
 		scrollFactor.set();
 	}
 
-	// --------------------------------------------------
-	// Init (called from Gun)
-	// --------------------------------------------------
-
+	// Called by Gun
 	public static function init():Void
 	{
 		if (instance != null)
@@ -47,7 +46,6 @@ class Bullet extends FlxSprite
 		if (activeShot)
 			return;
 
-		// Can't shoot if player hidden behind shrubs
 		if (gun.owner.overlaps(shrub))
 			return;
 
@@ -55,18 +53,12 @@ class Bullet extends FlxSprite
 		exists = true;
 		visible = true;
 
-		// Spawn relative to gun
 		x = gun.x - 397;
 		y = gun.y - 18;
 
-		// Direction towards enemy
 		var dir = enemy.x > x ? 1 : -1;
 		velocity.x = speed * dir;
 	}
-
-	// --------------------------------------------------
-	// Update
-	// --------------------------------------------------
 
 	override public function update(elapsed:Float):Void
 	{
@@ -75,47 +67,36 @@ class Bullet extends FlxSprite
 		if (!activeShot)
 			return;
 
-		// Hit enemy
 		if (overlaps(enemy))
 		{
-			hitEnemy();
+			hitEnemy(enemy, shrub);
 		}
 
-		// Out of screen cleanup
 		if (x < -width || x > FlxG.width + width)
 		{
 			resetBullet();
 		}
 	}
 
-	// --------------------------------------------------
-	// Hit logic
-	// --------------------------------------------------
-
-	public static function hitEnemy(enemy:Character, shrub:FlxSprite):Bool
+	function hitEnemy(enemy:Character, shrub:FlxSprite):Bool
 	{
 		resetBullet();
 
-		// Damage
 		if (!Reflect.hasField(enemy, "health"))
 			enemy.health = 200;
 
 		enemy.health -= 50;
 
-		// Red flash overlay
 		enemy.color = FlxColor.RED;
-		FlxTween.color(
-			enemy,
-			0.25,
-			FlxColor.RED,
-			FlxColor.WHITE
-		);
+		FlxTween.color(enemy, 0.25, FlxColor.RED, FlxColor.WHITE);
 
-		// Enemy death
 		if (enemy.health <= 0)
 		{
 			enemy.kill();
+			return true;
 		}
+
+		return false;
 	}
 
 	function resetBullet():Void
