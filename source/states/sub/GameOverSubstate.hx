@@ -7,7 +7,7 @@ import states.MainMenuState;
 import flixel.FlxG;
 import flixel.input.keyboard.FlxKey;
 import flixel.input.touch.FlxTouch;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import backend.Transition;
 
 class GameOverSubstate extends FlxSubState
