@@ -2,6 +2,7 @@ package states;
 
 import flixel.FlxState;
 import backend.AchievementsLoader;
+import backend.ui.AchievementsUI;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
