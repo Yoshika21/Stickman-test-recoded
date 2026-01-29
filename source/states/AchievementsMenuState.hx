@@ -3,6 +3,7 @@ package states;
 import flixel.FlxState;
 import backend.AchievementsLoader;
 import backend.ui.AchievementsUI;
+import backend.Transition;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxG;
 import flixel.FlxSprite;
