@@ -86,6 +86,20 @@ jobs:
           haxelib set hxcpp git
 
       # -----------------------------
+      # Build hxcpp (forced, non-interactive)
+      # -----------------------------
+      - name: Build hxcpp tools and cppia
+        run: |
+          HXCPP_PATH=$(haxelib path hxcpp | head -n 1)
+          cd $HXCPP_PATH
+          cd tools/run
+          haxe compile.hxml
+          cd ../hxcpp
+          haxe compile.hxml
+          cd ../../project
+          haxe compile-cppia.hxml
+      
+      # -----------------------------
       # Lime setup android
       # -----------------------------
       - name: Lime setup android
@@ -149,6 +163,20 @@ jobs:
           haxelib set hxWindowColorMode 0.2.1
           haxelib set hxcpp git
 
+      # -----------------------------
+      # Build hxcpp (forced, non-interactive)
+      # -----------------------------
+      - name: Build hxcpp tools and cppia
+        run: |
+          HXCPP_PATH=$(haxelib path hxcpp | head -n 1)
+          cd $HXCPP_PATH
+          cd tools/run
+          haxe compile.hxml
+          cd ../hxcpp
+          haxe compile.hxml
+          cd ../../project
+          haxe compile-cppia.hxml
+          
       # -----------------------------
       # Setup Windows
       # -----------------------------
