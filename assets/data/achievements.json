@@ -3,6 +3,10 @@
     "Thanks for playing": {
       "icon": "tfp",
       "description": "Thanks for playing my first haxe coded game! Also, this is not a full game."
+    },
+    "Congrats 4 Killin'": {
+      "icon": "kill_first",
+      "description": "Congratulations for killing your first enemy!"
     }
   }
 }
