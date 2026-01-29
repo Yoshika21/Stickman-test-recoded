@@ -13,6 +13,8 @@ class Character extends FlxSprite
 	public var canShoot:Bool = true;
 	public var charName:String;
 	public var isEnemy:Bool = false;
+	public var health:Int = 200;
+    public var dead:Bool = false;
 
 	public function new(x:Float, y:Float, jsonName:String, isEnemy:Bool = false)
 	{
