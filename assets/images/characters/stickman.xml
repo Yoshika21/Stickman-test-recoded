@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="stickman.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="stick idle 00000000" x="1046" y="0" width="330" height="695" frameX="-476" frameY="-16" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="stick idle 00010000" x="1771" y="0" width="330" height="644" frameX="-476" frameY="-67" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="stick idle 00020000" x="0" y="987" width="364" height="611" frameX="-461" frameY="-100" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="stick idle 00030000" x="1376" y="0" width="395" height="572" frameX="-443" frameY="-139" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="stick idle 00040000" x="0" y="473" width="455" height="514" frameX="-417" frameY="-197" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="stick idle 00050000" x="0" y="0" width="505" height="473" frameX="-392" frameY="-238" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="stick idle 00060000" x="505" y="0" width="541" height="425" frameX="-375" frameY="-286" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="stick walk 00000000" x="1046" y="0" width="330" height="695" frameX="-476" frameY="-16" frameWidth="1280" frameHeight="720"/>
+</TextureAtlas>
