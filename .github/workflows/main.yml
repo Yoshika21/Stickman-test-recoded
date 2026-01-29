@@ -167,15 +167,19 @@ jobs:
       # -----------------------------
       # Build hxcpp (forced, non-interactive)
       # -----------------------------
-      - name: Build hxcpp tools and cppia
-        shell: bash
+      - name: Build hxcpp tools and cppia (Windows)
+        shell: pwsh
         run: |
          $HXCPP_PATH = (haxelib path hxcpp | Select-Object -First 1)
+         Write-Host "HXCPP_PATH=$HXCPP_PATH"
+
          Set-Location $HXCPP_PATH
          Set-Location tools/run
          haxe compile.hxml
+
          Set-Location ../hxcpp
          haxe compile.hxml
+
          Set-Location ../../project
          haxe compile-cppia.hxml
           
