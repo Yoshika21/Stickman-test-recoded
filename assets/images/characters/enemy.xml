@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="enemy.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="enemy idle 00000000" x="1687" y="0" width="330" height="695" frameX="-476" frameY="-16" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="enemy idle 00010000" x="1357" y="0" width="330" height="695" frameX="-476" frameY="-16" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="enemy idle 00020000" x="992" y="0" width="365" height="653" frameX="-462" frameY="-58" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="enemy idle 00030000" x="0" y="563" width="409" height="609" frameX="-443" frameY="-102" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="enemy idle 00040000" x="0" y="0" width="472" height="563" frameX="-414" frameY="-148" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="enemy idle 00050000" x="472" y="0" width="520" height="499" frameX="-403" frameY="-212" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="enemy walk 00000000" x="1687" y="0" width="330" height="695" frameX="-476" frameY="-16" frameWidth="1280" frameHeight="720"/>
+</TextureAtlas>
