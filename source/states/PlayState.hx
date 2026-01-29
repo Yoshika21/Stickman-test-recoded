@@ -70,8 +70,8 @@ class PlayState extends FlxState
 		crouchBtn = new Crouch(player, shrub);
 		add(crouchBtn);
 
-		gunBtn = new GunButton(gun);
-		add(gunBtn);
+        gunBtn = new GunButton(gun, player);
+        add(gunBtn);
 		#end
 
 		Transition.fadeIn();
