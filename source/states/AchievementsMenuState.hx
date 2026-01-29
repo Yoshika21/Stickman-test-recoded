@@ -3,6 +3,7 @@ package states;
 import flixel.FlxState;
 import backend.AchievementsLoader;
 import backend.ui.AchievementsUI;
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
@@ -46,33 +47,42 @@ class AchievementsMenuState extends FlxState
 	}
 
 	function createButtons():Void
-	{
-		// Left Button
-		btnLeft = new FlxSprite(40, FlxG.height / 2);
-		btnLeft.frames = Paths.getSparrowAtlas(
-			"menus/achievements/buttons/button_left"
-		);
-		btnLeft.animation.addByPrefix("idle", "buttonleft idle", 24, true);
-		btnLeft.animation.addByPrefix("anim", "buttonleft anim", 24, false);
-		btnLeft.animation.play("idle");
-		btnLeft.y -= btnLeft.height / 2;
-		add(btnLeft);
+    {
+	// -------------------------
+	// Left Button
+	// -------------------------
+	btnLeft = new FlxSprite(40, FlxG.height / 2);
 
-		// Right Button
-		btnRight = new FlxSprite(
-			FlxG.width - 200,
-			FlxG.height / 2
-		);
-		btnRight.frames = Paths.getSparrowAtlas(
-			"menus/achievements/buttons/button_right"
-		);
-		btnRight.animation.addByPrefix("idle", "buttonright idle", 24, true);
-		btnRight.animation.addByPrefix("anim", "buttonright anim", 24, false);
-		btnRight.animation.play("idle");
-		btnRight.y -= btnRight.height / 2;
-		add(btnRight);
-	}
+	btnLeft.frames = FlxAtlasFrames.fromSparrow(
+		"assets/images/menus/achievements/buttons/button_left.png",
+		"assets/images/menus/achievements/buttons/button_left.xml"
+	);
 
+	btnLeft.animation.addByPrefix("idle", "buttonleft idle", 24, true);
+	btnLeft.animation.addByPrefix("anim", "buttonleft anim", 24, false);
+	btnLeft.animation.play("idle");
+	btnLeft.y -= btnLeft.height / 2;
+	add(btnLeft);
+
+	// -------------------------
+	// Right Button
+	// -------------------------
+	btnRight = new FlxSprite(
+		FlxG.width - 200,
+		FlxG.height / 2
+	);
+
+	btnRight.frames = FlxAtlasFrames.fromSparrow(
+		"assets/images/menus/achievements/buttons/button_right.png",
+		"assets/images/menus/achievements/buttons/button_right.xml"
+	);
+
+	btnRight.animation.addByPrefix("idle", "buttonright idle", 24, true);
+	btnRight.animation.addByPrefix("anim", "buttonright anim", 24, false);
+	btnRight.animation.play("idle");
+	btnRight.y -= btnRight.height / 2;
+	add(btnRight);
+    }
 	function createAndroidBack():Void
 	{
 		if (!FlxG.onMobile)
