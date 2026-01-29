@@ -40,11 +40,10 @@ class GunButton extends FlxSprite
 			if (
 				touch.justPressed &&
 				overlapsPoint(
-					FlxPoint.get(touch.screenX, touch.screenY)
-				)
+					FlxPoint.get(touch.screenX, touch.screenY))
 			)
 			{
-				Gun.shoot();
+				gun.shoot();
 				break;
 			}
 		}
