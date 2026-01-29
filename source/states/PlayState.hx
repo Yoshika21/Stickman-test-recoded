@@ -85,7 +85,7 @@ class PlayState extends FlxState
 		player.checkEnemyCollision(enemy, shrub);
 
 		// Bullet hit logic
-		if (Bullet.hitEnemy(enemy, shrub))
+		if (Bullet.instance != null && Bullet.instance.hitEnemy(enemy, shrub))
 		{
 			if (!enemyKilled)
 			{
