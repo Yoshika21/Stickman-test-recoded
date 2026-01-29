@@ -59,7 +59,7 @@ class Gun extends FlxSprite
 		#end
 	}
 
-	function shoot():Void
+	public function shoot():Void
 	{
 		Bullet.init();
 	}
