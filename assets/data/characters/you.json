@@ -1,0 +1,22 @@
+{
+  "charAnims": {
+    "idle": {
+      "name": "stick_idle",
+      "fps": 20,
+      "flipX": false,
+      "flipY": false,
+      "loop": true
+    },
+    "walking": {
+      "name": "stick_walk",
+      "fps": 20,
+      "flipX": false,
+      "flipY": false,
+      "loop": false
+    }
+  },
+  "charInfo": {
+    "imagePath": "stickman",
+    "scale": [1, 1]
+  }
+}
