@@ -1,6 +1,7 @@
 package states;
 
 import flixel.FlxState;
+import backend.AchievementsLoader;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
@@ -8,7 +9,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxAxes;
 import flixel.input.keyboard.FlxKey;
 import flixel.group.FlxGroup;
-import flixel.util.FlxRect;
+import flixel.math.FlxRect;
 
 class AchievementsMenuState extends FlxState
 {
@@ -37,9 +38,6 @@ class AchievementsMenuState extends FlxState
 			return;
 
 		AchievementsLoader.currentAchievement = achievementNames[index];
-
-		// Load the visual loader state content
-		add(new AchievementsLoader());
 
 		createButtons();
 		createAndroidBack();
