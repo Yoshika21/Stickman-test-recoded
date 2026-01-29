@@ -1,0 +1,22 @@
+{
+  "charAnims": {
+    "idle": {
+      "name": "enemy_idle",
+      "fps": 20,
+      "flipX": false,
+      "flipY": false,
+      "loop": true
+    },
+    "walking": {
+      "name": "enemy_walk",
+      "fps": 20,
+      "flipX": false,
+      "flipY": false,
+      "loop": false
+    }
+  },
+  "charInfo": {
+    "imagePath": "enemy",
+    "scale": [1, 1]
+  }
+}
