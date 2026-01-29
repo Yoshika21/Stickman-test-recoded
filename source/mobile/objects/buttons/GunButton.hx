@@ -44,7 +44,7 @@ class GunButton extends FlxSprite
 				)
 			)
 			{
-				gun.shoot();
+				Gun.shoot();
 				break;
 			}
 		}
