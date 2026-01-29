@@ -78,7 +78,7 @@ class Bullet extends FlxSprite
 		}
 	}
 
-	function hitEnemy(enemy:Character, shrub:FlxSprite):Bool
+	public function hitEnemy(enemy:Character, shrub:FlxSprite):Bool
 	{
 		resetBullet();
 
