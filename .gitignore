@@ -4,3 +4,5 @@ dump/
 
 # project files
 .github/workflows/dependencies.yml
+# decencies lib
+hmm.json
