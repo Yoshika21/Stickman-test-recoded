@@ -39,6 +39,7 @@ class AchievementsMenuState extends FlxState
 
 		AchievementsLoader.currentAchievement = achievementNames[index];
 
+		add(new AchievementsUI());
 		createButtons();
 		createAndroidBack();
 	}
