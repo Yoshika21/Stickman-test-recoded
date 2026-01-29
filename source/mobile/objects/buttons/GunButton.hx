@@ -44,16 +44,10 @@ class GunButton extends FlxSprite
 				)
 			)
 			{
-				shoot();
+				gun.shoot();
 				break;
 			}
 		}
-	}
-
-	function shoot():Void
-	{
-		// Same behavior as desktop click
-		gun.shoot();
 	}
 
 	override public function destroy():Void
@@ -64,4 +58,3 @@ class GunButton extends FlxSprite
 		#end
 	}
 }
-
